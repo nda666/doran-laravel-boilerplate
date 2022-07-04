@@ -225,7 +225,7 @@ php artisan make:controller ExampleController --pest
     ```shell
     php artisan scribe:generate
     ```
-    ![Scribe Documentation](https://github.com/nda666/doran-laravel-boilerplate/docs.png)
+    ![Scribe Documentation](https://github.com/nda666/doran-laravel-boilerplate/blob/master/docs.png)
 
 ## Dev Depency used:
 
