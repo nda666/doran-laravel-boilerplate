@@ -16,7 +16,7 @@ git clone https://github.com/nda666/doran-laravel-boilerplate
 php artisan make:controller ExampleController --pest
 ```
 
--   Please warp all CRUD process in controller using Repository pattern design. Example: <br>
+-   Please warp all CRUD process in controller using Repository pattern design. Don't forget to write docblock to generate API Documentation if you write an api controller. Example: <br>
     Create a Repository:
 
     ```shell
@@ -84,18 +84,25 @@ php artisan make:controller ExampleController --pest
     }
     ```
 
-    in App\Controller\OrderController.php
+    example using repository pattern in App\Controller\Api\OrderController.php
 
     ```php
     <?php
 
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\Api;
 
+    use App\Http\Controllers\Controller;
     use App\Interfaces\OrderInterface;
+    use App\Repositories\OrderRepository;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
 
+    /**
+    * @group Order management
+    *
+    * APIs for managing orders
+    */
     class OrderController extends Controller
     {
         private OrderRepository $orderRepository;
@@ -105,6 +112,13 @@ php artisan make:controller ExampleController --pest
             $this->orderRepository = $orderRepository;
         }
 
+        /**
+        * Get all Orders
+        *
+        * This endpoint allows you to get all orders
+        *
+        * @return JsonResponse
+        */
         public function index(): JsonResponse
         {
             return response()->json([
@@ -112,6 +126,38 @@ php artisan make:controller ExampleController --pest
             ]);
         }
 
+        /**
+        * Get One Order
+        *
+        * This endpoint allows you to get one Order
+        *
+        * @urlParam id integer required The ID of the order.
+        *
+        * @param Request request The request object.
+        *
+        * @return JsonResponse A JSON response with the data from the order repository.
+        */
+        public function show(Request $request): JsonResponse
+        {
+            $orderId = $request->route('id');
+
+            return response()->json([
+                'data' => $this->orderRepository->getOrderById($orderId)
+            ]);
+        }
+
+        /**
+        * Create Order
+        *
+        * This endpoint allows you to create an order
+        *
+        * @bodyParam client string required The client name. Example: "jhon doe"
+        * @bodyParam details string required The item name. Example: "Sample Product"
+        *
+        * @param Request request The request object.
+        *
+        * @return JsonResponse A JSON response with the data of the created order.
+        */
         public function store(Request $request): JsonResponse
         {
             $orderDetails = $request->only([
@@ -127,15 +173,19 @@ php artisan make:controller ExampleController --pest
             );
         }
 
-        public function show(Request $request): JsonResponse
-        {
-            $orderId = $request->route('id');
-
-            return response()->json([
-                'data' => $this->orderRepository->getOrderById($orderId)
-            ]);
-        }
-
+        /**
+        * Update Order
+        *
+        * This endpoint allows you to update an order
+        *
+        * @urlParam id integer required The ID of the order.
+        * @bodyParam client string required The client name. Example: "jhon doe"
+        * @bodyParam details string required The item name. Example: "Sample Product"
+        *
+        * @param Request request The request object
+        *
+        * @return JsonResponse The response is a JSON object with a data property.
+        */
         public function update(Request $request): JsonResponse
         {
             $orderId = $request->route('id');
@@ -149,6 +199,17 @@ php artisan make:controller ExampleController --pest
             ]);
         }
 
+        /**
+        * Delete Order
+        *
+        * This endpoint allows you to delete an order
+        *
+        * @urlParam id integer required The ID of the order.
+        *
+        * @param Request request The request object.
+        *
+        * @return JsonResponse A JSON response with a status code of 204.
+        */
         public function destroy(Request $request): JsonResponse
         {
             $orderId = $request->route('id');
@@ -157,7 +218,14 @@ php artisan make:controller ExampleController --pest
             return response()->json(null, Response::HTTP_NO_CONTENT);
         }
     }
+
     ```
+
+-   Generating the docs:
+    ```shell
+    php artisan scribe:generate
+    ```
+    ![Scribe Documentation](https://github.com/nda666/doran-laravel-boilerplate/docs.png)
 
 ## Dev Depency used:
 
