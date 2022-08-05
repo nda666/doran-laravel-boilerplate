@@ -50,14 +50,14 @@ endpoints:
         name: name
         description: 'Add your name here'
         required: false
-        example: ea
+        example: ut
         type: string
         custom: []
     bodyParameters: []
     responses:
       -
         status: 200
-        content: '{"message":"Hello, ea"}'
+        content: '{"message":"Hello, ut"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

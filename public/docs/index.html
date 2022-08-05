@@ -229,7 +229,7 @@ with it for a bit.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/home?name=ea" \
+    --get "http://localhost/api/home?name=ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -240,7 +240,7 @@ with it for a bit.</p>
 );
 
 const params = {
-    "name": "ea",
+    "name": "ut",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -274,7 +274,7 @@ access-control-allow-origin: *
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;Hello, ea&quot;
+    &quot;message&quot;: &quot;Hello, ut&quot;
 }</code>
  </pre>
     </span>
@@ -323,7 +323,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="name"
                data-endpoint="GETapi-home"
-               value="ea"
+               value="ut"
                data-component="query" hidden>
     <br>
 <p>Add your name here</p>

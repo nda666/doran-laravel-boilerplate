@@ -51,12 +51,12 @@ paths:
           in: query
           name: name
           description: 'Add your name here'
-          example: ea
+          example: ut
           required: false
           schema:
             type: string
             description: 'Add your name here'
-            example: ea
+            example: ut
         -
           in: header
           name: Content-Type
@@ -79,11 +79,11 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'Hello, ea'
+                  message: 'Hello, ut'
                 properties:
                   message:
                     type: string
-                    example: 'Hello, ea'
+                    example: 'Hello, ut'
       tags:
         - Endpoints
       security: []

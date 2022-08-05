@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "19d0102a-6eb9-430d-b20e-9e8fe0448180",
+        "_postman_id": "54f30740-acda-40d4-b5c4-35cdf84b007d",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -76,12 +76,12 @@
                             "query": [
                                 {
                                     "key": "name",
-                                    "value": "ea",
+                                    "value": "ut",
                                     "description": "Add your name here",
                                     "disabled": false
                                 }
                             ],
-                            "raw": "{{baseUrl}}\/api\/home?name=ea"
+                            "raw": "{{baseUrl}}\/api\/home?name=ut"
                         },
                         "method": "GET",
                         "header": [
@@ -125,7 +125,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"message\":\"Hello, ea\"}",
+                            "body": "{\"message\":\"Hello, ut\"}",
                             "name": ""
                         }
                     ]
