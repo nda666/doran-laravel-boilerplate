@@ -64,6 +64,9 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env.example') && copy('.env.example', '.env');" && chmod 777 .env.example && chmod 777 .env
 
+      - name: App Key
+        run: php artisan key:generate
+
       - name: Install Dependencies
         run: composer install -q --no-progress --prefer-dist --optimize-autoloader
 
