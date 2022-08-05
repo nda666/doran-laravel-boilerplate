@@ -44,7 +44,7 @@ jobs:
         run: composer install -q --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run Php Cs Fixer
-        run: ./vendor/bin/php-cs-fixer fix app --allow-risky=yes
+        run: ./vendor/bin/pint
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
