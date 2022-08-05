@@ -21,7 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/home', Home::class);
 
-
 Route::get('/healthcheck', function () {
     return [
         'status' => 'up',

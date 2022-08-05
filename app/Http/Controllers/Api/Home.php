@@ -22,6 +22,6 @@ class Home extends Controller
      */
     public function __invoke(Request $request)
     {
-        return ['message' => 'Hello' . ($request->has('name') ? ', ' . $request->get('name') : '')];
+        return ['message' => 'Hello'.($request->has('name') ? ', '.$request->get('name') : '')];
     }
 }
