@@ -2,7 +2,7 @@ name: Doc Generator
 
 on:
   workflow_run:
-    workflows: ["PHPStan", "PHPUnit Test"]
+    workflows: ["PHPUnit Test"]
     types:
       - completed
 jobs:
@@ -57,14 +57,14 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env.example') && copy('.env.example', '.env');" && chmod 777 .env.example && chmod 777 .env
 
-      - name: App Key
-        run: php artisan key:generate
-
       - name: Install Dependencies
         run: composer install -q --no-progress --prefer-dist --optimize-autoloader
 
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache database
+
+      - name: App Key
+        run: php artisan key:generate
 
       - name: Generate Scribe Documentation 📚
         run: php artisan scribe:generate

@@ -2,7 +2,7 @@ name: PHPUnit Test
 
 on:
   workflow_run:
-    workflows: ["Fix styling"]
+    workflows: ["PHPStan"]
     types:
       - completed
 jobs:
