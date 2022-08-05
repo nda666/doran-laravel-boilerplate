@@ -1,23 +1,82 @@
-<?xml version="1.0"?>
-<ruleset name="PHP_CodeSniffer">
-    <description>The coding standard for our project.</description>
+<?xml version="1.0" encoding="utf-8"?>
+<ruleset name="Doran Coding Standart">
+    <description>Doran Coding Standart</description>
+
+    <!-- display progress -->
+    <arg value="p"/>
+    <!-- use colors in output -->
+    <arg name="colors"/>
+
+    <!-- inherit rules from: -->
     <rule ref="PSR2"/>
+    <rule ref="Generic.PHP.DeprecatedFunctions"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <!--<rule ref="Squiz.Commenting.FileComment"/>-->
+    <!--<rule ref="Generic.Commenting.Todo" />-->
+
+    <!-- The soft limit on line length MUST be 120 characters;
+    automated style checkers MUST warn but MUST NOT error at the soft limit. -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- The closing ?> tag MUST be omitted from files containing only PHP. -->
+    <rule ref="Zend.Files.ClosingTag"/>
+
+    <!-- All PHP files MUST use the Unix LF (linefeed) line ending. -->
+    <rule ref="Generic.Files.LineEndings">
+        <properties>
+            <property name="eolChar" value="\n"/>
+        </properties>
+    </rule>
+
+    <rule ref="PSR1">
+        <exclude-pattern>*.php</exclude-pattern>
+        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
+
+        <exclude-pattern>database/*</exclude-pattern>
+    </rule>
+    <rule ref="PSR2">
+        <exclude name="PSR2.ControlStructures.SwitchDeclaration.BodyOnNextLineCASE" />
+        <properties>
+            <property name="lineLimit" value="130"/>
+            <property name="absoluteLineLimit" value="135"/>
+        </properties>
+    </rule>
 
     <file>app</file>
-    <file>bootstrap</file>
     <file>config</file>
-    <file>database</file>
+    <file>public</file>
     <file>resources</file>
     <file>routes</file>
     <file>tests</file>
 
-    <exclude-pattern>bootstrap/cache/*</exclude-pattern>
-    <exclude-pattern>bootstrap/autoload.php</exclude-pattern>
+    <exclude-pattern>*/.phpstorm.meta.php</exclude-pattern>
+    <exclude-pattern>*/_ide_helper.php</exclude-pattern>
+    <exclude-pattern>*/database/*</exclude-pattern>
+    <exclude-pattern>*/cache/*</exclude-pattern>
+    <exclude-pattern>*/*.js</exclude-pattern>
+    <exclude-pattern>*/*.css</exclude-pattern>
+    <exclude-pattern>*/*.xml</exclude-pattern>
+    <exclude-pattern>*/*.blade.php</exclude-pattern>
+    <exclude-pattern>*/autoload.php</exclude-pattern>
+    <exclude-pattern>*/storage/*</exclude-pattern>
+    <exclude-pattern>*/docs/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
     <exclude-pattern>*/migrations/*</exclude-pattern>
-    <exclude-pattern>*/seeds/*</exclude-pattern>
-    <exclude-pattern>*.blade.php</exclude-pattern>
-    <exclude-pattern>*.js</exclude-pattern>
+    <exclude-pattern>*/config/*</exclude-pattern>
+    <exclude-pattern>*/public/index.php</exclude-pattern>
+    <exclude-pattern>*/*.blade.php</exclude-pattern>
+    <exclude-pattern>*/Console/Kernel.php</exclude-pattern>
+    <exclude-pattern>*/Exceptions/Handler.php</exclude-pattern>
+    <exclude-pattern>*/Http/Kernel.php</exclude-pattern>
+    <exclude-pattern>*/Providers/*</exclude-pattern>
+    <exclude-pattern>*/resources/lang/*</exclude-pattern>
 
-    <!-- Show progression -->
-    <arg value="p"/>
+    <arg name="colors"/>
+    <arg value="spv"/>
+    <ini name="memory_limit" value="128M"/>
 </ruleset>
